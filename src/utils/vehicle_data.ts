@@ -1,7 +1,6 @@
 import Papa from 'papaparse';
 
-import { VehicleData, VehicleMakeData, VehicleSalesDataByType, VehicleSalesData } from "@/types/vehicle";
-import { count } from 'console';
+import { VehicleData, VehicleSalesDataByType, VehicleSalesData } from "@/types/vehicle";
 
 export function preProcessCSVData(input_data: string): VehicleData[] {
     const { data } = Papa.parse(input_data, {
