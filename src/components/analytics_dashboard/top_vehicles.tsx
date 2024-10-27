@@ -87,33 +87,6 @@ export default function TopVehicles(data: topVehicleProps) {
                                 setFilters({
                                     year: val,
                                 })
-                                // if (val == 'ALL') {
-                                //     setFilters({
-                                //         type: 'ALL',
-                                //         model: 'ALL',
-                                //         make: 'ALL',
-                                //         year: 'ALL',
-                                //         countType: filters.countType,
-                                //     })
-                                //     setMakers(Object.keys(analyzedData["ALL"].sales))
-                                //     setModels([]);
-                                //     setYear([]);
-                                //     return;
-                                // }
-
-                                // setMakers(Object.keys(analyzedData[val].sales));
-                                // setModels([]);
-                                // setYear([]);
-
-                                // let n_filters = {
-                                //     type: val,
-                                //     model: 'ALL',
-                                //     make: 'ALL',
-                                //     year: 'ALL',
-                                //     countType: filters.countType,
-                                // }
-
-                                // setFilters(n_filters)
 
                             }}
                             label="Type"
