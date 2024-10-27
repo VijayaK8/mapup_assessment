@@ -17,10 +17,10 @@ interface AnalyticsDashboardProps {
 }
 
 export default function AnalyticsDashboard({ data }: AnalyticsDashboardProps) {
-    let [analyzedData, setAnalyzedData] = useState<VehicleSalesData>(undefined);
+    const [analyzedData, setAnalyzedData] = useState<VehicleSalesData>(undefined);
 
     useEffect(() => {
-        let aggregated_data: VehicleSalesData = aggregateSalesData(data);
+        const aggregated_data: VehicleSalesData = aggregateSalesData(data);
         setAnalyzedData(aggregated_data);
     }, [data]);
 

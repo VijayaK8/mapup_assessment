@@ -11,9 +11,9 @@ export function preProcessCSVData(input_data: string): VehicleData[] {
 }
 
 export function aggregateSalesData(data: VehicleData[]): VehicleSalesData {
-    let final_data: { [key: string]: VehicleSalesDataByType } = {};
-    let top_selling_models: { [key: string]: { model: string, count: number } } = {};
-    let top_selling_by_year: { [key: string]: { [key: string]: { model: string, count: number } } } = {};
+    const final_data: { [key: string]: VehicleSalesDataByType } = {};
+    const top_selling_models: { [key: string]: { model: string, count: number } } = {};
+    const top_selling_by_year: { [key: string]: { [key: string]: { model: string, count: number } } } = {};
 
     final_data["ALL"] = {
         electric_vehicle_type: "ALL",
@@ -21,12 +21,12 @@ export function aggregateSalesData(data: VehicleData[]): VehicleSalesData {
     }
 
     for (let i = 0; i < data.length; i++) {
-        let make = data[i]["Make"];
-        let model = data[i]["Model"];
-        let year = data[i]["Model Year"];
-        let vehicle_type = data[i]["Electric Vehicle Type"];
-        let car_model = `${make}-${model}`;
-        let all_sales = final_data["ALL"].sales;
+        const make = data[i]["Make"];
+        const model = data[i]["Model"];
+        const year = data[i]["Model Year"];
+        const vehicle_type = data[i]["Electric Vehicle Type"];
+        const car_model = `${make}-${model}`;
+        const all_sales = final_data["ALL"].sales;
 
         if (!top_selling_models.hasOwnProperty(car_model)) {
             top_selling_models[car_model] = {

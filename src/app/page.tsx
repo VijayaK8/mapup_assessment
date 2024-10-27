@@ -1,5 +1,5 @@
 "use client"
-import Image from "next/image";
+
 import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
@@ -18,9 +18,9 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      let res = await fetch('/data/Electric_Vehicle_Population_Data.csv');
-      let data = await res.text();
-      let processedData = preProcessCSVData(data);
+      const res = await fetch('/data/Electric_Vehicle_Population_Data.csv');
+      const data = await res.text();
+      const processedData = preProcessCSVData(data);
       setCSVData(processedData);
     }
     fetchData();

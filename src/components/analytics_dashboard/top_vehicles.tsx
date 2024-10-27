@@ -16,8 +16,6 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-import { VehicleSalesDataByType, VehicleMakeData } from "@/types/vehicle";
-
 interface topVehicleProps {
     byYear: { [key: string]: { [key: string]: { model: string, count: number } } }
 }
@@ -44,16 +42,16 @@ function getModelInOrder(data: { [key: string]: { model: string, count: number }
 }
 
 export default function TopVehicles(data: topVehicleProps) {
-    let [yearlyData, setYearlyData] = useState<{ [key: string]: { [key: string]: { model: string, count: number } } }>({});
-    let [models, setModels] = useState<modelInfo[]>([]);
-    let [year, setYears] = useState<string[]>([]);
-    let [filters, setFilters] = useState<GraphFilters>({
+    const [yearlyData, setYearlyData] = useState<{ [key: string]: { [key: string]: { model: string, count: number } } }>({});
+    const [models, setModels] = useState<modelInfo[]>([]);
+    const [year, setYears] = useState<string[]>([]);
+    const [filters, setFilters] = useState<GraphFilters>({
         year: 'ALL',
     })
 
     useEffect(() => {
         setYearlyData(data.byYear);
-        let models_d: modelInfo[] = getModelInOrder(data.byYear['ALL']);
+        const models_d: modelInfo[] = getModelInOrder(data.byYear['ALL']);
         setFilters({
             year: 'ALL'
         })
@@ -65,7 +63,7 @@ export default function TopVehicles(data: topVehicleProps) {
         if (Object.keys(yearlyData).length == 0) {
             return;
         }
-        let models_d: modelInfo[] = getModelInOrder(yearlyData[filters.year]);
+        const models_d: modelInfo[] = getModelInOrder(yearlyData[filters.year]);
         setModels(models_d.slice(0, 3));
     }, [filters]);
 

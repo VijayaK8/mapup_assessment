@@ -111,19 +111,19 @@ function getCounts(data: { [key: string]: VehicleMakeData }, filter: GraphFilter
 }
 
 export default function BrandGraph({ data }: BrandGraphProps) {
-    let [graphData, setGraphData] = useState<GraphData>(undefined);
-    let [analyzedData, setAnalyzedData] = useState<{ [key: string]: VehicleSalesDataByType }>({});
-    let [filters, setFilters] = useState<GraphFilters>({
+    const [graphData, setGraphData] = useState<GraphData>(undefined);
+    const [analyzedData, setAnalyzedData] = useState<{ [key: string]: VehicleSalesDataByType }>({});
+    const [filters, setFilters] = useState<GraphFilters>({
         type: 'ALL',
         model: 'ALL',
         make: 'ALL',
         year: 'ALL',
         countType: 'COUNT',
     })
-    let [types, setTypes] = useState<string[]>([]);
-    let [makers, setMakers] = useState<string[]>([]);
-    let [model, setModels] = useState<string[]>([]);
-    let [year, setYear] = useState<string[]>([]);
+    const [types, setTypes] = useState<string[]>([]);
+    const [makers, setMakers] = useState<string[]>([]);
+    const [model, setModels] = useState<string[]>([]);
+    const [year, setYear] = useState<string[]>([]);
 
 
 

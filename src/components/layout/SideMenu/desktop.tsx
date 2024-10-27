@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import Image from "next/image";
-
 import Box from '@mui/material/Box';
 import Drawer, { drawerClasses } from '@mui/material/Drawer';
 import Stack from '@mui/material/Stack';
