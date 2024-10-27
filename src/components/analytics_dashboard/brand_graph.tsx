@@ -67,7 +67,7 @@ function getCounts(data: { [key: string]: VehicleMakeData }, filter: GraphFilter
             return counts;
         }
 
-        let total_count = counts.reduce((acc, cv) => acc + cv, 0);
+        const total_count = counts.reduce((acc, cv) => acc + cv, 0);
 
         counts = counts.map((cnt: number) => {
             return Math.round(((cnt) / total_count) * 100 * 100) / 100;
@@ -83,7 +83,7 @@ function getCounts(data: { [key: string]: VehicleMakeData }, filter: GraphFilter
         if (filter.countType == "COUNT") {
             return counts;
         }
-        let total_count = counts.reduce((acc, cv) => acc + cv, 0);
+        const total_count = counts.reduce((acc, cv) => acc + cv, 0);
         counts = counts.map((cnt: number) => {
             return Math.round(((cnt) / total_count) * 100 * 100) / 100;
         })
@@ -98,7 +98,7 @@ function getCounts(data: { [key: string]: VehicleMakeData }, filter: GraphFilter
         if (filter.countType == "COUNT") {
             return counts;
         }
-        let total_count = counts.reduce((acc, cv) => acc + cv, 0);
+        const total_count = counts.reduce((acc, cv) => acc + cv, 0);
         counts = counts.map((cnt: number) => {
             return Math.round(((cnt) / total_count) * 100 * 100) / 100;
         })
@@ -123,12 +123,11 @@ export default function BrandGraph({ data }: BrandGraphProps) {
     const [types, setTypes] = useState<string[]>([]);
     const [makers, setMakers] = useState<string[]>([]);
     const [model, setModels] = useState<string[]>([]);
-    const [year, setYear] = useState<string[]>([]);
 
 
 
     useEffect(() => {
-        let aggregated_data: { [key: string]: VehicleSalesDataByType } = data;
+        const aggregated_data: { [key: string]: VehicleSalesDataByType } = data;
         setAnalyzedData(aggregated_data);
         setGraphData({
             labels: getLabels(aggregated_data[filters.type].sales, filters),
@@ -166,7 +165,7 @@ export default function BrandGraph({ data }: BrandGraphProps) {
                             id="type-id"
                             value={filters.type}
                             onChange={(event: SelectChangeEvent) => {
-                                let val = event.target.value as string;
+                                const val = event.target.value as string;
                                 if (val == 'ALL') {
                                     setFilters({
                                         type: 'ALL',
@@ -177,15 +176,13 @@ export default function BrandGraph({ data }: BrandGraphProps) {
                                     })
                                     setMakers(Object.keys(analyzedData["ALL"].sales))
                                     setModels([]);
-                                    setYear([]);
                                     return;
                                 }
 
                                 setMakers(Object.keys(analyzedData[val].sales));
                                 setModels([]);
-                                setYear([]);
 
-                                let n_filters = {
+                                const n_filters = {
                                     type: val,
                                     model: 'ALL',
                                     make: 'ALL',
@@ -213,7 +210,7 @@ export default function BrandGraph({ data }: BrandGraphProps) {
                             id="Company-id"
                             value={filters.make}
                             onChange={(event: SelectChangeEvent) => {
-                                let val = event.target.value as string;
+                                const val = event.target.value as string;
                                 if (val == 'ALL') {
                                     setFilters({
                                         type: filters.type,
@@ -223,14 +220,12 @@ export default function BrandGraph({ data }: BrandGraphProps) {
                                         countType: filters.countType,
                                     })
                                     setModels([]);
-                                    setYear([]);
                                     return;
                                 }
 
                                 setModels(Object.keys(analyzedData[filters.type].sales[val].models));
-                                setYear([]);
 
-                                let n_filters = {
+                                const n_filters = {
                                     type: filters.type,
                                     model: 'ALL',
                                     make: val,
@@ -268,7 +263,7 @@ export default function BrandGraph({ data }: BrandGraphProps) {
                                     id="model-select"
                                     value={filters.model}
                                     onChange={(event: SelectChangeEvent) => {
-                                        let val = event.target.value as string;
+                                        const val = event.target.value as string;
                                         if (val == 'ALL') {
                                             setFilters({
                                                 type: filters.type,
@@ -277,12 +272,10 @@ export default function BrandGraph({ data }: BrandGraphProps) {
                                                 year: 'ALL',
                                                 countType: filters.countType,
                                             })
-                                            setYear([]);
                                             return;
                                         }
-                                        setYear(Object.keys(analyzedData[filters.type].sales[filters.make].models[val].year));
 
-                                        let n_filters = {
+                                        const n_filters = {
                                             type: filters.type,
                                             model: val,
                                             make: filters.make,
@@ -313,7 +306,7 @@ export default function BrandGraph({ data }: BrandGraphProps) {
                             id="aggregated_as"
                             value={filters.countType}
                             onChange={(event: SelectChangeEvent) => {
-                                let val = event.target.value as string;
+                                const val = event.target.value as string;
                                 setFilters({
                                     type: filters.type,
                                     model: filters.model,
@@ -345,7 +338,7 @@ export default function BrandGraph({ data }: BrandGraphProps) {
                                     // categoryGapRatio: 0.5,
                                     data: graphData.labels,
                                 },
-                            ] as any
+                            ]
                         }
                         series={[
                             {

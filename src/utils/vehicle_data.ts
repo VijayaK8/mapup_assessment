@@ -52,7 +52,7 @@ export function aggregateSalesData(data: VehicleData[]): VehicleSalesData {
                 sales: {}
             }
         }
-        let this_type_sales = final_data[vehicle_type].sales;
+        const this_type_sales = final_data[vehicle_type].sales;
 
 
         if (!all_sales.hasOwnProperty(make)) {

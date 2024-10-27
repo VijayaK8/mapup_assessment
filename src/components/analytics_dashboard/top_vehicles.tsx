@@ -30,9 +30,9 @@ type modelInfo = {
 }
 
 function getModelInOrder(data: { [key: string]: { model: string, count: number } }): modelInfo[] {
-    let models: modelInfo[] = [];
+    const models: modelInfo[] = [];
 
-    for (var key in data) {
+    for (const key in data) {
         models.push(data[key]);
     }
 
@@ -83,7 +83,7 @@ export default function TopVehicles(data: topVehicleProps) {
                             id="year-id"
                             value={filters.year}
                             onChange={(event: SelectChangeEvent) => {
-                                let val = event.target.value as string;
+                                const val = event.target.value as string;
                                 setFilters({
                                     year: val,
                                 })
